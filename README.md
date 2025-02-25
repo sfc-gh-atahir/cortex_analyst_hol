@@ -78,20 +78,20 @@ ls @CORTEX_ANALYST_HOL_REPO/branches/main/data;
 copy files into @raw_data/
 from @CORTEX_ANALYST_HOL_REPO/branches/main/data/;
 
-ls @CORTEX_ANALYST_HOL_REPO/branches/main/NOTEBOOK_CORTEX_ANALYST;
+ls @CORTEX_ANALYST_HOL_REPO/branches/main/notebooks;
 
 -- create notebook stage
 create or replace stage notebook_stage DIRECTORY = (ENABLE = TRUE) ENCRYPTION = (TYPE = 'SNOWFLAKE_SSE');
 
 -- copy notebook from github to internal stage
 copy files into @notebook_stage/
-from @CORTEX_ANALYST_HOL_REPO/branches/main/NOTEBOOK_CORTEX_ANALYST;
+from @CORTEX_ANALYST_HOL_REPO/branches/main/notebooks;
 
 ls @cortex_analyst_demo.REVENUE_TIMESERIES.NOTEBOOK_STAGE;
 
 -- Create Notebook
-CREATE or replace NOTEBOOK __NOTEBOOK_CORTEX_ANALYST_HOL
- FROM '@cortex_analyst_demo.REVENUE_TIMESERIES.NOTEBOOK_STAGE/NOTEBOOK_CORTEX_ANALYST'
+CREATE or replace NOTEBOOK __notebooks_HOL
+ FROM '@cortex_analyst_demo.REVENUE_TIMESERIES.NOTEBOOK_STAGE/notebooks'
  MAIN_FILE = 'notebook_app.ipynb'
  QUERY_WAREHOUSE = 'cortex_analyst_wh';
 
