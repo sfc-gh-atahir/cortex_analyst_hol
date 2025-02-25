@@ -56,18 +56,18 @@ CREATE OR REPLACE STAGE raw_data DIRECTORY = (ENABLE = TRUE);
 
 use role accountadmin;
 -- Create the integration with Github
-CREATE OR REPLACE API INTEGRATION GITHUB_INTEGRATION_FAHAD
+CREATE OR REPLACE API INTEGRATION GITHUB_INTEGRATION_atif
     api_provider = git_https_api
-    api_allowed_prefixes = ('https://github.com/fahadaz')
+    api_allowed_prefixes = ('https://github.com/atifaz')
     enabled = true
-    comment='Fahads repository containing all the awesome code.';
+    comment='atifs repository containing all the awesome code.';
 
 use role cortex_user_role;
 -- Create the integration with the Github repository
 CREATE GIT REPOSITORY CORTEX_ANALYST_HOL_REPO 
-	ORIGIN = 'https://github.com/fahadaz/cortex_analyst_hol' 
-	API_INTEGRATION = 'GITHUB_INTEGRATION_FAHAD' 
-	COMMENT = 'Fahads repository containing all the awesome code.';
+	ORIGIN = 'https://github.com/atifaz/cortex_analyst_hol' 
+	API_INTEGRATION = 'GITHUB_INTEGRATION_atif' 
+	COMMENT = 'atifs repository containing all the awesome code.';
 
 -- Fetch most recent files from Github repository
 ALTER GIT REPOSITORY CORTEX_ANALYST_HOL_REPO FETCH;
