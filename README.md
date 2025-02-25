@@ -58,14 +58,14 @@ use role accountadmin;
 -- Create the integration with Github
 CREATE OR REPLACE API INTEGRATION GITHUB_INTEGRATION_atif
     api_provider = git_https_api
-    api_allowed_prefixes = ('https://github.com/atifaz')
+    api_allowed_prefixes = ('[https://github.com/atif](https://github.com/sfc-gh-atahir)')
     enabled = true
     comment='atifs repository containing all the awesome code.';
 
 use role cortex_user_role;
 -- Create the integration with the Github repository
 CREATE GIT REPOSITORY CORTEX_ANALYST_HOL_REPO 
-	ORIGIN = 'https://github.com/atifaz/cortex_analyst_hol' 
+	ORIGIN = '[https://github.com/atif/cortex_analyst_hol](https://github.com/sfc-gh-atahir/cortex_analyst_hol)' 
 	API_INTEGRATION = 'GITHUB_INTEGRATION_atif' 
 	COMMENT = 'atifs repository containing all the awesome code.';
 
